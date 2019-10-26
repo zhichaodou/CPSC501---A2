@@ -67,6 +67,30 @@ public class Inspector {
     		System.out.print("	Method modifiers: " + Modifier.toString(method.getModifiers()) + "\n");
     	}
 		
+		//fields 
+    	System.out.print("\n");
+    	System.out.print("/////////////////// Fields for class: " + className + " /////////////////// \n");
+    	Field[] classFields = c.getDeclaredFields();
+    	
+    	for (Field field: classFields) {
+    		field.setAccessible(true);
+    		System.out.print("Field name: " + field.getName() + "\n");
+    		System.out.print("	Field type: " + field.getType() + "\n");
+    		System.out.print("	Field modifers: " + Modifier.toString(field.getModifiers()) + "\n");
+    		try {
+				System.out.print("	Current value: " + field.get(obj).toString() + "\n");
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NullPointerException e) {
+				System.out.print("	Current value: " + "NULL" + "\n");
+			}
+    		
+    		
+    	}
 		
     }
 
