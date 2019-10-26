@@ -32,7 +32,20 @@ public class Inspector {
     		inspectClass(classI, obj, recursive, 0);
     	}
 		
-		
+		//constructors 
+    	System.out.print("\n");
+    	System.out.print("/////////////////// Constructors for class: " + className + " /////////////////// \n");
+    	Constructor[] classConstructor = c.getDeclaredConstructors();
+    	
+    	for(Constructor constructor : classConstructor) {
+    		constructor.setAccessible(true);
+    		System.out.print("Constructor name: " + constructor.getName() + "\n");
+    		
+    		for(Parameter parameter: constructor.getParameters()) {
+    			System.out.print("	Parameters: " + parameter.getType() + "\n");
+    		}
+    		System.out.print("	Method modifiers: " + Modifier.toString(constructor.getModifiers()) + "\n");
+    	}
     }
 
 }
