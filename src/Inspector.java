@@ -1,3 +1,9 @@
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Constructor;
+
 public class Inspector {
 
     public void inspect(Object obj, boolean recursive) {
