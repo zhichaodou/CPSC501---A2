@@ -46,6 +46,28 @@ public class Inspector {
     		}
     		System.out.print("	Method modifiers: " + Modifier.toString(constructor.getModifiers()) + "\n");
     	}
+		
+		//methods
+    	System.out.print("\n");
+    	System.out.print("/////////////////// Methods for class: " + className + " /////////////////// \n");
+    	Method[] classMethods = c.getDeclaredMethods();
+    	
+    	for(Method method : classMethods) {
+    		method.setAccessible(true);
+    		System.out.print("Method name: " + method.getName() + "\n");
+    		
+    		for( Class excep : method.getExceptionTypes()) {
+    			System.out.print("	Exception Thrown: " + excep.getName()+ "\n");
+    		}
+    		
+    		for(Parameter parameter: method.getParameters()) {
+    			System.out.print("	Parameters: " + parameter.getType() + "\n");
+    		}
+    		System.out.print("	Return type: " + method.getReturnType() + "\n");
+    		System.out.print("	Method modifiers: " + Modifier.toString(method.getModifiers()) + "\n");
+    	}
+		
+		
     }
 
 }
