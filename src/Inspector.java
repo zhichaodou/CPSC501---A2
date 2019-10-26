@@ -6,6 +6,15 @@ public class Inspector {
     }
 
     private void inspectClass(Class c, Object obj, boolean recursive, int depth) {
+		
+		boolean hasSuper = false;
+    	boolean hasInterface = false;
+    	
+    	//class
+    	String className = c.getName();
+    	System.out.print("\n");
+    	System.out.print("Class name: " + className + "\n");
+		
     }
 
 }
