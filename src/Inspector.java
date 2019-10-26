@@ -1,22 +1,22 @@
 public class Inspector {
 
     public void inspect(Object obj, boolean recursive) {
-        Class c = obj.getClass();
-        inspectClass(c, obj, recursive, 0);
+        Class classTest = obj.getClass();
+        inspectClass(classTest, obj, recursive, 0);
     }
 
-    private void inspectClass(Class c, Object obj, boolean recursive, int depth) {
+    private void inspectClass(Class classTest, Object obj, boolean recursive, int depth) {
 		
 		boolean hasSuper = false;
     	boolean hasInterface = false;
     	
     	//class
-    	String className = c.getName();
+    	String className = classTest.getName();
     	System.out.print("\n");
     	System.out.print("Class name: " + className + "\n");
 		
 		//super class
-    	Class superClass = c.getSuperclass();
+    	Class superClass = classTest.getSuperclass();
     	try {
     	System.out.print("Super class: " + superClass.getName() + "\n");
     	inspectClass(superClass, obj, recursive, 0);
@@ -25,7 +25,7 @@ public class Inspector {
 		}
  
     	//name of each interface the class implements
-    	Class[] classInterface = c.getInterfaces();
+    	Class[] classInterface = classTest.getInterfaces();
     	
     	for (Class classI:classInterface) {
     		System.out.print("Interface: " + classI.getName() + "\n");
@@ -35,7 +35,7 @@ public class Inspector {
 		//constructors 
     	System.out.print("\n");
     	System.out.print("/////////////////// Constructors for class: " + className + " /////////////////// \n");
-    	Constructor[] classConstructor = c.getDeclaredConstructors();
+    	Constructor[] classConstructor = classTest.getDeclaredConstructors();
     	
     	for(Constructor constructor : classConstructor) {
     		constructor.setAccessible(true);
@@ -50,7 +50,7 @@ public class Inspector {
 		//methods
     	System.out.print("\n");
     	System.out.print("/////////////////// Methods for class: " + className + " /////////////////// \n");
-    	Method[] classMethods = c.getDeclaredMethods();
+    	Method[] classMethods = classTest.getDeclaredMethods();
     	
     	for(Method method : classMethods) {
     		method.setAccessible(true);
@@ -70,7 +70,7 @@ public class Inspector {
 		//fields 
     	System.out.print("\n");
     	System.out.print("/////////////////// Fields for class: " + className + " /////////////////// \n");
-    	Field[] classFields = c.getDeclaredFields();
+    	Field[] classFields = classTest.getDeclaredFields();
     	
     	for (Field field: classFields) {
     		field.setAccessible(true);
