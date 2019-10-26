@@ -15,6 +15,24 @@ public class Inspector {
     	System.out.print("\n");
     	System.out.print("Class name: " + className + "\n");
 		
+		//super class
+    	Class superClass = c.getSuperclass();
+    	try {
+    	System.out.print("Super class: " + superClass.getName() + "\n");
+    	inspectClass(superClass, obj, recursive, 0);
+    	}catch (NullPointerException e) {
+			System.out.print(" Super class: NULL");
+		}
+ 
+    	//name of each interface the class implements
+    	Class[] classInterface = c.getInterfaces();
+    	
+    	for (Class classI:classInterface) {
+    		System.out.print("Interface: " + classI.getName() + "\n");
+    		inspectClass(classI, obj, recursive, 0);
+    	}
+		
+		
     }
 
 }
